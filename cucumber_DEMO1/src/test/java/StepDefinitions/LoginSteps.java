@@ -12,7 +12,7 @@ import org.junit.Assert;
 
 public class LoginSteps {
 	 WebDriver driver= null;
-	 String projectPath = System.getProperty("user.dir");
+	 //String projectPath = System.getProperty("user.dir");
 	@SuppressWarnings("deprecation")
 	@Given("^user is on home page$")
 	public void user_is_on_home_page() throws Throwable {
@@ -38,11 +38,11 @@ public class LoginSteps {
 
 	@Then("^success message is displayed$")
 	public void success_message_is_displayed() throws Throwable {
-		String exp_message = "Welcome to your account. Here you can manage all   of your personal information and orders.";
-    	Object actual = null;
-		Assert.assertEquals(exp_message, actual);
-        driver.quit(); 
-		System.out.println("hello world 1");
+		String exp_message = "Welcome to your account. Here you can manage all of your personal information and orders.";
+    	String actual = driver.findElement(By.cssSelector(".info-account")).getText();
+    	Assert.assertEquals(exp_message, actual);
+       driver.quit();
+        System.out.println("hello world 2");
 	}
 
 }
